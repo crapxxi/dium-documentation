@@ -1,45 +1,45 @@
-# DIUM — Быстрый предзаказ еды в университетах
+# DIUM — Fast Food Pre-ordering at Universities
 
-Платформа для предзаказа еды в университетских кафе и буфетах. Студенты оформляют заказы заранее, минуя очереди. Оплата через Kaspi. Владелец заведения получает уведомление в WhatsApp и управляет статусами заказов в реальном времени.
+A platform for pre-ordering food at university cafes and canteens. Students place orders in advance, skipping the queues. Payment via Kaspi. The venue owner receives a WhatsApp notification and manages order statuses in real time.
 
-**Сайт:** [dium.kz](https://dium.kz)
-
----
-
-> **Исходный код репозиториев скрыт по соображениям безопасности.**
+**Website:** [dium.kz](https://dium.kz)
 
 ---
 
-## Стек технологий
+> **Source code repositories are hidden for security reasons.**
 
-| Часть | Технологии |
+---
+
+## Tech Stack
+
+| Layer | Technologies |
 |---|---|
 | Backend | Java 17, Spring Boot, PostgreSQL, Spring Security + JWT |
 | Frontend | Angular 21 (SSR), TailwindCSS v4 |
-| Уведомления | WhatsApp (Green API) |
-| Оплата | Kaspi |
-| Хранение изображений | Cloudinary |
-| Кэш / Rate Limiting | Caffeine, Bucket4j |
-| Контейнеризация | Docker |
+| Notifications | WhatsApp (Green API) |
+| Payments | Kaspi |
+| Image Storage | Cloudinary |
+| Cache / Rate Limiting | Caffeine, Bucket4j |
+| Containerization | Docker |
 
-## Роли пользователей
+## User Roles
 
-| Роль | Возможности |
+| Role | Capabilities |
 |---|---|
-| `CLIENT` | Просмотр меню и заведений, оформление заказов, оплата |
-| `VENUE_OWNER` | Управление меню, обработка и отслеживание заказов на кухне |
-| `ADMIN` | Регистрация владельцев заведений, управление заведениями |
+| `CLIENT` | Browse menus and venues, place orders, make payments |
+| `VENUE_OWNER` | Manage menus, process and track kitchen orders |
+| `ADMIN` | Register venue owners, manage venues |
 
-## Жизненный цикл заказа
+## Order Lifecycle
 
 ```
-CLIENT создаёт заказ → PENDING → PREPARING → READY → COMPLETED
-                                          └──────────────► CANCELLED
+CLIENT places order → PENDING → PREPARING → READY → COMPLETED
+                                        └──────────────► CANCELLED
 ```
 
-На каждом этапе клиент получает уведомление в WhatsApp.
+The client receives a WhatsApp notification at each stage.
 
-## Документация
+## Documentation
 
-- [Backend](./backend/README.md) — REST API, архитектура, эндпоинты, переменные окружения
-- [Frontend](./frontend/README.md) — Angular-приложение, маршруты, архитектура, ключевые флоу
+- [Backend](./backend/README.md) — REST API, architecture, endpoints, environment variables
+- [Frontend](./frontend/README.md) — Angular app, routes, architecture, key flows
